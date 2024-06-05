@@ -45,7 +45,12 @@ variable "boot_disk_info" {
 }
 
 variable "data_disk_info" {
-  description = "The information of data disk of GCE instance."
+  description = "Information about the data disk"
+  type = object({
+    disk_name = string
+    disk_size_gb = number
+    disk_type    = string
+  })
 }
 
 variable "vm_deletion_protect" {
