@@ -26,6 +26,24 @@ resource "google_compute_disk" "boot_gce_disk" {
   physical_block_size_bytes = 4096
 }
 
+######################################
+# Google Compute VM Data Disk Creation
+######################################
+resource "google_compute_disk" "data_gce_disk" {
+  name  = "${var.machine_name}-data-disk"
+  size  = var.data_disk_info["disk_size_gb"]
+  type  = var.data_disk_info["disk_type"]
+  zone  = var.machine_zone
+
+  labels = merge(
+    var.disk_labels,
+    tomap({
+      "type" = "data",
+    })
+  )
+  physical_block_size_bytes = 4096
+}
+
 # #########################
 # Google Static Internal IP
 # #########################

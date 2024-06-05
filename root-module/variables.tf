@@ -44,6 +44,10 @@ variable "boot_disk_info" {
   description = "The information of boot disk of GCE instance."
 }
 
+variable "data_disk_info" {
+  description = "The information of data disk of GCE instance."
+}
+
 variable "vm_deletion_protect" {
   type        = bool
   description = "The prevent deletion of a GCE instance on accidental terraform destroy or from console"
